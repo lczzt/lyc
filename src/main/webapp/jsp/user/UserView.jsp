@@ -17,9 +17,14 @@
     <title>Title</title>
     <base href="<%=basePath%>">
     <link rel="stylesheet" href="<%=basePath%>/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=basePath%>/css/bootstrap-editable.css">
+    <link rel="stylesheet" href="<%=basePath%>/css/bootstrap-table.css">
     <script language='javascript' src="<%=basePath%>/js/jquery.min.js"></script>
     <script language='javascript' src="<%=basePath%>/js/bootstrap.min.js"></script>
-    <script language='javascript' src="./UserView.js"></script>
+    <script language='javascript' src="<%=basePath%>/js/bootstrap-editable.js"></script>
+    <script language='javascript' src="<%=basePath%>/js/bootstrap-table.js"></script>
+    <script language='javascript' src="<%=basePath%>/js/bootstrap-table-zh-CN.js"></script>
+    <script language='javascript' src="<%=basePath%>/jsp/user/UserView.js"></script>
 </head>
 <body>
 <div class="form-inline">
@@ -33,6 +38,8 @@
     </div>
     <button type="submit" class="btn btn-primary">查询</button>
 </div>
-<table id="tb_users"></table>
+<div>
+    <table id="tb_users"></table>
+</div>
 </body>
 </html>

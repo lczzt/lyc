@@ -25,6 +25,7 @@ public class UserDao {
         List<Menu> menuList = jdbcTemplate.query(sql, new String[]{}, rowMapper);
         return menuList;
     }
+    //查询二级菜单
     public List<Menu> querySecondMenu(String menuPid){
         String sql = "SELECT MENU_TEXT,MENU_ID,ROUTER_LINK FROM NP_ACCESS_CONTROL_MENU WHERE MENU_OWNER='YY' AND MENU_PID = ? ";
         RowMapper rowMapper = getRowMapper();

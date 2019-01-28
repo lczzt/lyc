@@ -2,6 +2,7 @@ package it.chao.controller;
 
 import it.chao.common.ServerResponse;
 import it.chao.domain.Menu;
+import it.chao.domain.User;
 import it.chao.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,5 +31,22 @@ public class UserController {
         List<Menu> secondMenu = userService.getSecondMenu(menuId);
         model.addAttribute("secondMenu",secondMenu);
         return ServerResponse.createBySuccess(secondMenu);
+    }
+    @RequestMapping(value = "/getUsers")
+    @ResponseBody
+    public Map<String,Object> getUsers(){
+        List<User> userList = new ArrayList<User>();
+        for (int i=0; i<56;i++){
+            User user = new User();
+            user.setUSER_ID("lichao"+i);
+            user.setUSER_NAME("lichao"+i);
+            user.setUSER_EMAIL("lichao@feiyi.com.cn");
+            user.setUSER_PHONE("18710973146");
+            userList.add(user);
+        }
+        Map<String,Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("total",userList.size());
+        resultMap.put("rows",userList);
+        return resultMap;
     }
 }
