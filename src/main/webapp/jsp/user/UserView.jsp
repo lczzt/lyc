@@ -17,7 +17,7 @@
     <title>Title</title>
     <base href="<%=basePath%>">
     <link rel="stylesheet" href="<%=basePath%>/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<%=basePath%>/css/bootstrap-editable.css">
+    <%--<link rel="stylesheet" href="<%=basePath%>/css/bootstrap-editable.css">--%>
     <link rel="stylesheet" href="<%=basePath%>/css/bootstrap-table.css">
     <script language='javascript' src="<%=basePath%>/js/jquery.min.js"></script>
     <script language='javascript' src="<%=basePath%>/js/bootstrap.min.js"></script>
@@ -25,6 +25,30 @@
     <script language='javascript' src="<%=basePath%>/js/bootstrap-table.js"></script>
     <script language='javascript' src="<%=basePath%>/js/bootstrap-table-zh-CN.js"></script>
     <script language='javascript' src="<%=basePath%>/jsp/user/UserView.js"></script>
+    <style>
+        #tb_users{
+            height: calc(100% - 34px) !important;
+        }
+        #tb_users tr:nth-child(even) {
+            background: #fafafa !important;
+        }
+
+        #tb_users th {
+            background: #efefef !important;
+        }
+        .myTable .bootstrap-table{
+            height: 100% !important;
+        }
+        .myTable .fixed-table-toolbar{
+            height: 50px !important;
+        }
+        .myTable .fixed-table-pagination{
+            height: 60px !important;
+        }
+        .myTable .fixed-table-container{
+            height: calc(100% - 110px) !important;
+        }
+    </style>
 </head>
 <body>
 <div class="form-inline">
@@ -38,7 +62,7 @@
     </div>
     <button type="submit" class="btn btn-primary">查询</button>
 </div>
-<div>
+<div class="myTable" style="height: calc(100% - 40px);">
     <table id="tb_users"></table>
 </div>
 </body>

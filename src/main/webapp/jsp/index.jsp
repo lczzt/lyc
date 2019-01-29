@@ -24,6 +24,9 @@
     <script language='javascript' src="<%=basePath%>/js/index.js"></script>
 </head>
 <style>
+    .mainBox{
+        height: calc(100% - 60px) !important;
+    }
     .row{
         height: calc(100% - 72px) !important;
         width: calc(100% - -15px) !important;
@@ -106,7 +109,7 @@
         <div class="mainBox">
             <iframe src="jsp/login.jsp" id="reportFrame"
                     frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-                    width="1210px" height="100%"></iframe>
+                    width="100%" height="100%"></iframe>
         </div>
 
     </div>

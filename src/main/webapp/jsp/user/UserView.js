@@ -26,25 +26,25 @@ function initTable() {
         showRefresh: false,                  //是否显示刷新按钮
         minimumCountColumns: 2,             //最少允许的列数
         clickToSelect: true,                //是否启用点击选中行
-        height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+        //height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
         uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
         showToggle: false,                    //是否显示详细视图和列表视图的切换按钮
         cardView: false,                    //是否显示详细视图
         detailView: false,                   //是否显示父子表
-        rowStyle: function (row, index) {
-            //这里有5个取值代表5中颜色['active', 'success', 'info', 'warning', 'danger'];
-            var strclass = "success";
-            // if (row.ORDER_STATUS == "待排产") {
-            //     strclass = 'success';//还有一个active
-            // }
-            // else if (row.ORDER_STATUS == "已删除") {
-            //     strclass = 'danger';
-            // }
-            // else {
-            //     return {};
-            // }
-            return { classes: strclass }
-        },
+        // rowStyle: function (row, index) {
+        //     //这里有5个取值代表5中颜色['active', 'success', 'info', 'warning', 'danger'];
+        //     var strclass = "success";
+        //     // if (row.ORDER_STATUS == "待排产") {
+        //     //     strclass = 'success';//还有一个active
+        //     // }
+        //     // else if (row.ORDER_STATUS == "已删除") {
+        //     //     strclass = 'danger';
+        //     // }
+        //     // else {
+        //     //     return {};
+        //     // }
+        //     return { classes: strclass }
+        // },
         columns: [{
             checkbox: true
         }, {
