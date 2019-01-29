@@ -1,12 +1,10 @@
 var path="";
 $(document).ready(function() {
-    var pathName = document.location.pathname;
-    var index = pathName.substr(1).indexOf("/");
-    path = pathName.substr(0,index+1);
+    path = getPath();
     initTable();
 });
 function initTable() {
-    $('#tb_users').bootstrapTable({
+    $('#tb').bootstrapTable({
         url: path+'/user/getUsers',         //请求后台的URL（*）
         method: 'get',                      //请求方式（*）
         //toolbar: '#toolbar',                //工具按钮用哪个容器
@@ -27,7 +25,7 @@ function initTable() {
         minimumCountColumns: 2,             //最少允许的列数
         clickToSelect: true,                //是否启用点击选中行
         //height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
-        uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
+        uniqueId: "user_ID",                     //每一行的唯一标识，一般为主键列
         showToggle: false,                    //是否显示详细视图和列表视图的切换按钮
         cardView: false,                    //是否显示详细视图
         detailView: false,                   //是否显示父子表
@@ -45,20 +43,57 @@ function initTable() {
         //     // }
         //     return { classes: strclass }
         // },
-        columns: [{
+        columns: [
+        {
             checkbox: true
-        }, {
+        },
+        {
             field: 'user_ID',
-            title: '用户ID'
+            title: '用户ID',
+            align: "center",
+            width:120,
+            editable:true
         }, {
             field: 'user_NAME',
-            title: '用户名称'
+            title: '用户名称',
+            width:250,
+            editable: {
+                type: 'text',
+                title: '用户名',
+                validate: function (v) {
+                    if (!v) return '用户名不能为空';
+
+                }
+            }
         }, {
             field: 'user_EMAIL',
-            title: '邮箱'
+            title: '邮箱',
+            width:250,
+            hidden:true
         }, {
             field: 'user_PHONE',
-            title: '电话'
-        }]
+            title: '电话',
+            width:150
+        }],
+        onEditableSave: function (field, row, oldValue, $el) {
+            $.ajax({
+                type: "post",
+                url: "/Editable/Edit",
+                data: row,
+                dataType: 'JSON',
+                success: function (data, status) {
+                    if (status == "success") {
+                        alert('提交数据成功');
+                    }
+                },
+                error: function () {
+                    alert('编辑失败');
+                },
+                complete: function () {
+
+                }
+
+            });
+        }
     });
 }

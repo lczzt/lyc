@@ -1,0 +1,25 @@
+#tb{
+    height: calc(100% - 34px) !important;
+}
+#tb tr:nth-child(even) {
+    background: #fafafa !important;
+}
+
+#tb th {
+    background: #efefef !important;
+}
+.myTable .bootstrap-table{
+    height: 100% !important;
+}
+.myTable .fixed-table-toolbar{
+    height: 50px !important;
+}
+.myTable .fixed-table-pagination{
+    height: 60px !important;
+}
+.myTable .fixed-table-container{
+    height: calc(100% - 110px) !important;
+}
+.myTable th{
+    text-align: center !important;
+}
