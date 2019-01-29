@@ -36,7 +36,8 @@ public class UserController extends BaseExceptionHandleAction {
     }
     @RequestMapping(value = "/getUsers")
     @ResponseBody
-    public Map<String,Object> getUsers(){
+    public Map<String,Object> getUsers(int offset,int limit){
+        int pageNo = offset / limit +1;
         List<User> userList = new ArrayList<User>();
         for (int i=0; i<56;i++){
             User user = new User();
