@@ -26,6 +26,7 @@
     <script language='javascript' src="<%=basePath%>/js/bootstrap-table.js"></script>
     <script language='javascript' src="<%=basePath%>/js/bootstrap-table-zh-CN.js"></script>
     <script language='javascript' src="<%=basePath%>/js/bootstrap-table-editable.js"></script>
+    <script language='javascript' src="<%=basePath%>/js/bootbox.min.js"></script>
     <script language='javascript' src="<%=basePath%>/jsp/user/UserView.js"></script>
     <script language='javascript' src="<%=basePath%>/js/comm.js"></script>
     <style>

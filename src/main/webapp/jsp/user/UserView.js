@@ -75,6 +75,12 @@ function initTable() {
             title: '电话',
             width:150
         }],
+        onLoadError: function(data){
+            bootbox.alert({
+                message:"123214",
+                title:"温馨提示"
+            });
+        },
         onEditableSave: function (field, row, oldValue, $el) {
             $.ajax({
                 type: "post",

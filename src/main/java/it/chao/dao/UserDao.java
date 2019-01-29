@@ -1,5 +1,6 @@
 package it.chao.dao;
 
+import it.chao.common.BusinessException;
 import it.chao.common.ServerResponse;
 import it.chao.domain.Menu;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class UserDao {
         return menuList;
     }
     //查询二级菜单
-    public List<Menu> querySecondMenu(String menuPid){
+    public List<Menu> querySecondMenu(String menuPid) throws BusinessException {
         String sql = "SELECT MENU_TEXT,MENU_ID,ROUTER_LINK FROM NP_ACCESS_CONTROL_MENU WHERE MENU_OWNER='YY' AND MENU_PID = ? ";
         RowMapper rowMapper = getRowMapper();
         List<Menu> menuList = jdbcTemplate.query(sql, new String[]{menuPid}, rowMapper);

@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="<%=basePath%>/css/bootstrap.min.css">
     <script language='javascript' src="<%=basePath%>/js/jquery.min.js"></script>
     <script language='javascript' src="<%=basePath%>/js/bootstrap.min.js"></script>
+    <script language='javascript' src="<%=basePath%>/js/bootbox.min.js"></script>
     <script language='javascript' src="<%=basePath%>/js/index.js"></script>
 </head>
 <style>

@@ -1,5 +1,7 @@
 package it.chao.controller;
 
+import it.chao.common.BaseExceptionHandleAction;
+import it.chao.common.BusinessException;
 import it.chao.common.ServerResponse;
 import it.chao.domain.Menu;
 import it.chao.domain.User;
@@ -22,7 +24,7 @@ import java.util.Map;
  **/
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class UserController extends BaseExceptionHandleAction {
     @Autowired
     private UserService userService;
     @RequestMapping(value = "/querySecondMenu")

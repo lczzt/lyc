@@ -33,19 +33,30 @@ function clickMenu(menuId,_this) {
         data : data,
         dataType : "json",
         success : function(data) {
-            var data = data.data;
-            var html = "";
-            for (var i=0;i<data.length;i++){
-                if(i == 0 ){
-                    html +='<p class="text-center secondMenu" onclick="clickSecond(this,\''+data[i].router_LINK+'\')" style="cursor: pointer;float: left;width: 120px">'+data[i].menu_TEXT+'</p>';
-                }else{
-                    html +='<p class="text-center secondMenu" onclick="clickSecond(this,\''+data[i].router_LINK+'\')" style="cursor: pointer;float: left;width: 120px;margin-left: 35px">'+data[i].menu_TEXT+'</p>';
+            if(data.success){
+                var data = data.data;
+                var html = "";
+                for (var i=0;i<data.length;i++){
+                    if(i == 0 ){
+                        html +='<p class="text-center secondMenu" onclick="clickSecond(this,\''+data[i].router_LINK+'\')" style="cursor: pointer;float: left;width: 120px">'+data[i].menu_TEXT+'</p>';
+                    }else{
+                        html +='<p class="text-center secondMenu" onclick="clickSecond(this,\''+data[i].router_LINK+'\')" style="cursor: pointer;float: left;width: 120px;margin-left: 35px">'+data[i].menu_TEXT+'</p>';
+                    }
                 }
+                $(".SecondMenu").html(html);
+            }else{
+                bootbox.alert({
+                    message:data.msg,
+                    title:"温馨提示"
+                });
             }
-            $(".SecondMenu").html(html);
+
         },
         error : function(data) {
-            alert(data);
+            bootbox.alert({
+                message:data.msg,
+                title:"温馨提示"
+            });
         }
     });
 }
