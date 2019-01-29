@@ -1,14 +1,12 @@
-package it.chao.domain;
-
-import org.codehaus.jackson.annotate.JsonProperty;
+package it.chao.VO;
 
 import java.util.Date;
 
 /**
  * Administrator
- * 23:09
+ * 23:22
  **/
-public class User {
+public class UserVo {
     private long ID;
     private String USER_ID;
     private  String USER_NAME;
@@ -19,6 +17,9 @@ public class User {
     private Date BDAY;
     private String IS_STOP;
     private String USER_TYPE;
+    private int offset;
+    private int limit;
+    private int pageNo;
 
     public long getID() {
         return ID;
@@ -98,5 +99,29 @@ public class User {
 
     public void setUSER_TYPE(String USER_TYPE) {
         this.USER_TYPE = USER_TYPE;
+    }
+
+    public int getOffset() {
+        return offset;
+    }
+
+    public void setOffset(int offset) {
+        this.offset = offset;
+    }
+
+    public int getLimit() {
+        return limit;
+    }
+
+    public void setLimit(int limit) {
+        this.limit = limit;
+    }
+
+    public int getPageNo() {
+        return pageNo;
+    }
+
+    public void setPageNo(int pageNo) {
+        this.pageNo = pageNo;
     }
 }

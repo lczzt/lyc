@@ -1,5 +1,6 @@
 package it.chao.controller;
 
+import it.chao.VO.UserVo;
 import it.chao.common.BaseExceptionHandleAction;
 import it.chao.common.BusinessException;
 import it.chao.common.ServerResponse;
@@ -36,17 +37,27 @@ public class UserController extends BaseExceptionHandleAction {
     }
     @RequestMapping(value = "/getUsers")
     @ResponseBody
-    public Map<String,Object> getUsers(int offset,int limit){
-        int pageNo = offset / limit +1;
-        List<User> userList = new ArrayList<User>();
-        for (int i=0; i<56;i++){
-            User user = new User();
-            user.setUSER_ID("lichao"+i);
-            user.setUSER_NAME("lichao"+i);
-            user.setUSER_EMAIL("lichao@feiyi.com.cn");
-            user.setUSER_PHONE("18710973146");
-            userList.add(user);
-        }
+    public Map<String,Object> getUsers(UserVo userVo){
+        int pageNo = userVo.getOffset() / userVo.getLimit() +1;
+        userVo.setPageNo(pageNo);
+        List<User> userList = userService.getUsers(userVo);
+//        if("lichao".equals(userVo.getUSER_NAME())){
+//            User user = new User();
+//            user.setUSER_ID("lichao");
+//            user.setUSER_NAME("lichao");
+//            user.setUSER_EMAIL("lichao@feiyi.com.cn");
+//            user.setUSER_PHONE("18710973146");
+//            userList.add(user);
+//        }else{
+//            for (int i=0; i<56;i++){
+//                User user = new User();
+//                user.setUSER_ID("lichao"+i);
+//                user.setUSER_NAME("lichao"+i);
+//                user.setUSER_EMAIL("lichao@feiyi.com.cn");
+//                user.setUSER_PHONE("18710973146");
+//                userList.add(user);
+//            }
+//        }
         Map<String,Object> resultMap = new HashMap<String, Object>();
         resultMap.put("total",userList.size());
         resultMap.put("rows",userList);

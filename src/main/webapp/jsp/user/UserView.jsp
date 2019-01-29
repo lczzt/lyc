@@ -43,7 +43,7 @@
         <label for="telePhone">手机号码：</label>
         <input type="email" class="form-control" id="telePhone" placeholder="请输入手机号码">
     </div>
-    <button type="submit" class="btn btn-primary">查询</button>
+    <button type="submit" onclick="queryUser()" class="btn btn-primary">查询</button>
 </div>
 <div class="myTable" style="height: calc(100% - 40px);">
     <table id="tb"></table>

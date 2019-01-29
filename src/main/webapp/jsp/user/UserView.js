@@ -1,11 +1,12 @@
-var path="";
-$(document).ready(function() {
+var path = "";
+$(document).ready(function () {
     path = getPath();
     initTable();
 });
+
 function initTable() {
     $('#tb').bootstrapTable({
-        url: path+'/user/getUsers',         //请求后台的URL（*）
+        url: path + '/user/getUsers',         //请求后台的URL（*）
         method: 'get',                      //请求方式（*）
         //toolbar: '#toolbar',                //工具按钮用哪个容器
         striped: true,                      //是否显示行间隔色
@@ -13,11 +14,11 @@ function initTable() {
         pagination: true,                   //是否显示分页（*）
         sortable: false,                     //是否启用排序
         sortOrder: "asc",                   //排序方式
-        //queryParams: oTableInit.queryParams,//传递参数（*）
+        queryParams: queryParams,//传递参数（*）
         sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
         pageNumber: 1,                       //初始化加载第一页，默认第一页
         pageSize: 10,                       //每页的记录行数（*）
-        pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+        pageList: [1, 2, 50, 100],        //可供选择的每页的行数（*）
         search: false,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
         strictSearch: false,
         showColumns: true,                  //是否显示所有的列
@@ -44,41 +45,47 @@ function initTable() {
         //     return { classes: strclass }
         // },
         columns: [
-        {
-            checkbox: true
-        },
-        {
-            field: 'user_ID',
-            title: '用户ID',
-            align: "center",
-            width:120,
-            editable:true
-        }, {
-            field: 'user_NAME',
-            title: '用户名称',
-            width:250,
-            editable: {
-                type: 'text',
-                title: '用户名',
-                validate: function (v) {
-                    if (!v) return '用户名不能为空';
+            {
+                checkbox: true
+            }, {
+                field: 'user_ID',
+                title: '用户ID',
+                align: "center",
+                width: 120,
+                editable: true
+            }, {
+                field: 'user_NAME',
+                title: '用户名称',
+                width: 250,
+                align: "center",
+                editable: {
+                    type: 'text',
+                    title: '用户名',
+                    validate: function (v) {
+                        if (!v) return '用户名不能为空';
 
+                    }
                 }
-            }
-        }, {
-            field: 'user_EMAIL',
-            title: '邮箱',
-            width:250,
-            hidden:true
-        }, {
-            field: 'user_PHONE',
-            title: '电话',
-            width:150
-        }],
-        onLoadError: function(data){
+            }, {
+                field: 'user_EMAIL',
+                title: '邮箱',
+                align: "center",
+                width: 250,
+            }, {
+                field: 'user_PHONE',
+                title: '电话',
+                align: "center",
+                width: 150
+            }, {
+                field: 'sex',
+                title: '性别',
+                align: "center",
+                width: 150
+            }],
+        onLoadError: function (data) {
             bootbox.alert({
-                message:"123214",
-                title:"温馨提示"
+                message: "123214",
+                title: "温馨提示"
             });
         },
         onEditableSave: function (field, row, oldValue, $el) {
@@ -102,4 +109,19 @@ function initTable() {
             });
         }
     });
+}
+
+function queryParams(params) {
+    var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+        // limit: params.limit,   //页面大小
+        offset: params.offset,  //页码
+        limit: params.limit,
+        USER_NAME: $("#userName").val(),
+        USER_PHONE: $("#telePhone").val()
+    };
+    return temp;
+}
+
+function queryUser() {
+    $('#tb').bootstrapTable('refresh');
 }
