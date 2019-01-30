@@ -35,32 +35,32 @@ public class UserController extends BaseExceptionHandleAction {
         model.addAttribute("secondMenu",secondMenu);
         return ServerResponse.createBySuccess(secondMenu);
     }
+
+    /**
+     * 查询用户
+     * @param userVo
+     * @return
+     */
     @RequestMapping(value = "/getUsers")
     @ResponseBody
     public Map<String,Object> getUsers(UserVo userVo){
         int pageNo = userVo.getOffset() / userVo.getLimit() +1;
         userVo.setPageNo(pageNo);
         List<User> userList = userService.getUsers(userVo);
-//        if("lichao".equals(userVo.getUSER_NAME())){
-//            User user = new User();
-//            user.setUSER_ID("lichao");
-//            user.setUSER_NAME("lichao");
-//            user.setUSER_EMAIL("lichao@feiyi.com.cn");
-//            user.setUSER_PHONE("18710973146");
-//            userList.add(user);
-//        }else{
-//            for (int i=0; i<56;i++){
-//                User user = new User();
-//                user.setUSER_ID("lichao"+i);
-//                user.setUSER_NAME("lichao"+i);
-//                user.setUSER_EMAIL("lichao@feiyi.com.cn");
-//                user.setUSER_PHONE("18710973146");
-//                userList.add(user);
-//            }
-//        }
         Map<String,Object> resultMap = new HashMap<String, Object>();
         resultMap.put("total",userList.size());
         resultMap.put("rows",userList);
         return resultMap;
+    }
+
+    /**
+     * 修改用户
+     * @param user
+     * @return
+     */
+    @RequestMapping("/editUser")
+    @ResponseBody
+    public ServerResponse editUser(User user){
+        return userService.editUser(user);
     }
 }

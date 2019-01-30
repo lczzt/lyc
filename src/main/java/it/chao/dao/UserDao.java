@@ -2,6 +2,7 @@ package it.chao.dao;
 
 import it.chao.VO.UserVo;
 import it.chao.common.BusinessException;
+import it.chao.common.ServerResponse;
 import it.chao.common.util.CurrentPage;
 import it.chao.common.util.PaginationHelper;
 import it.chao.controller.IndexController;
@@ -57,6 +58,23 @@ public class UserDao {
     }
 
     /**
+     * 修改用户
+     * @param user
+     * @return
+     * @throws BusinessException
+     */
+    public ServerResponse editUser(final User user) throws BusinessException{
+        String userName = user.getUSER_NAME();
+        long id = user.getID();
+        String sql = "UPDATE LYC_USER SET USER_NAME = ? WHERE ID=?";
+        int update = jdbcTemplate.update(sql, new Object[]{userName, id});
+        if(update >= 1){
+            return ServerResponse.createBySuccess();
+        }else{
+            return ServerResponse.createByError();
+        }
+    }
+    /**
      * 查询用户信息
      * @param userVo
      * @throws BusinessException
@@ -90,11 +108,12 @@ public class UserDao {
         c=p.getPageItems();
         return c;
     }
-    public static RowMapper getUserRowMap(){
+    public RowMapper getUserRowMap(){
         RowMapper rowMapper = new RowMapper() {
             @Override
             public Object mapRow(ResultSet resultSet, int i) throws SQLException {
                 User user = new User();
+                user.setID(Long.parseLong(resultSet.getString("ID")));
                 user.setUSER_ID(resultSet.getString("USER_ID"));
                 user.setSEX("0".equals(resultSet.getString("SEX"))?"男":"女");
                 user.setUSER_NAME(resultSet.getString("USER_NAME"));
@@ -105,4 +124,5 @@ public class UserDao {
         };
         return rowMapper;
     }
+
 }

@@ -1,6 +1,7 @@
 package it.chao.domain;
 
-import org.codehaus.jackson.annotate.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
 
@@ -20,22 +21,26 @@ public class User {
     private String IS_STOP;
     private String USER_TYPE;
 
+
+    @JsonProperty("ID")
     public long getID() {
         return ID;
     }
+
 
     public void setID(long ID) {
         this.ID = ID;
     }
 
+    @JsonProperty("USER_ID")
     public String getUSER_ID() {
         return USER_ID;
     }
-
     public void setUSER_ID(String USER_ID) {
         this.USER_ID = USER_ID;
     }
 
+    @JsonProperty("USER_NAME")
     public String getUSER_NAME() {
         return USER_NAME;
     }
@@ -44,6 +49,7 @@ public class User {
         this.USER_NAME = USER_NAME;
     }
 
+    @JsonProperty("USER_EMAIL")
     public String getUSER_EMAIL() {
         return USER_EMAIL;
     }
@@ -52,6 +58,7 @@ public class User {
         this.USER_EMAIL = USER_EMAIL;
     }
 
+    @JsonProperty("USER_PHONE")
     public String getUSER_PHONE() {
         return USER_PHONE;
     }
@@ -60,6 +67,7 @@ public class User {
         this.USER_PHONE = USER_PHONE;
     }
 
+    @JsonProperty("USER_PASS")
     public String getUSER_PASS() {
         return USER_PASS;
     }
@@ -68,6 +76,7 @@ public class User {
         this.USER_PASS = USER_PASS;
     }
 
+    @JsonProperty("SEX")
     public String getSEX() {
         return SEX;
     }
@@ -76,6 +85,7 @@ public class User {
         this.SEX = SEX;
     }
 
+    @JsonProperty("BDAY")
     public Date getBDAY() {
         return BDAY;
     }
@@ -84,6 +94,7 @@ public class User {
         this.BDAY = BDAY;
     }
 
+    @JsonProperty("IS_STOP")
     public String getIS_STOP() {
         return IS_STOP;
     }
@@ -92,6 +103,7 @@ public class User {
         this.IS_STOP = IS_STOP;
     }
 
+    @JsonProperty("USER_TYPE")
     public String getUSER_TYPE() {
         return USER_TYPE;
     }

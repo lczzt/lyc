@@ -16,7 +16,7 @@
 %>
 <html>
 <head>
-    <title>Title</title>
+    <title>供应链服务平台</title>
     <base href="<%=basePath%>">
     <link rel="stylesheet" href="<%=basePath%>/css/bootstrap.min.css">
     <script language='javascript' src="<%=basePath%>/js/jquery.min.js"></script>
@@ -27,13 +27,20 @@
 <style>
     .mainBox{
         height: calc(100% - 60px) !important;
+        border:1px solid #ccc;
+        padding: 5px;
     }
     .row{
         height: calc(100% - 72px) !important;
         width: calc(100% - -15px) !important;
     }
     .menuStyle{
-        color: red;
+        color: #845cc0;
+    }
+    .groupMenu, .secondMenu{
+        font-size: 16px;
+        font-weight: 700;
+        background: transparent
     }
 </style>
 <body>

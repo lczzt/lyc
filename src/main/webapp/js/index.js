@@ -44,6 +44,7 @@ function clickMenu(menuId,_this) {
                     }
                 }
                 $(".SecondMenu").html(html);
+                clickSecond($(".SecondMenu P")[0],data[0].router_LINK);
             }else{
                 bootbox.alert({
                     message:data.msg,
